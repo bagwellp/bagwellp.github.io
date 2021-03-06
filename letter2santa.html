@@ -1,0 +1,150 @@
+<html ng-app>
+<head>
+<title>Letter to Santa</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+<style type="text/css">
+
+body,html{
+	height: 100%;
+	font-family:Arial, Helvetica, sans-serif;
+	}
+
+*{
+	box-sizing: border-box;
+	}
+
+#bg-img {
+    background-image: url("img/snowman.jpg");
+	min-height: 950px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+	}	
+
+.questions  {
+    position: absolute;
+    right: 0;
+    margin: 30px;
+    max-width: 50%;
+    padding: 15px;
+    background-color: white;
+	}
+	
+.letter {
+	margin-top: 100px;
+	position: absolute;
+    left: 100px;
+    max-width: 500px;
+	}
+	
+input[type=text], select {
+    width: 100%;
+    padding: 3px;
+    border: none;
+    background: #f1f1f1;
+	font-size: 80%;
+	}
+
+input[type=text]:focus, select:focus {
+    background-color: #ddd;
+    outline: none;
+	}
+
+.btn {
+    background-color: #009999;
+	font-size: 120%;
+    color: white;
+    padding: 15px 15px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+	}
+
+.btn:hover {
+    opacity: 1;
+	}
+
+#b2, #b3, #b4{
+	background-color: red;
+	}
+	
+#story{
+	display: none;
+	m
+	}
+
+
+
+</style>
+</head>
+<body>
+<div id="bg-img">
+	<div id="story" class="letter">
+		<h3>{{date}}</h3><br>
+		<h3>Dear Santa,</h1>
+		<h3>My name is {{name}} and I am {{age}} years old.
+		This year I <span id="lBehavior"></span> <br> <br>
+		Something good I did this year was {{good}}.  <br><br>
+		I would like to give {{give}}. <br><br>
+		This year I might like to receive {{want}}. 
+		<br>
+		<p>Also, I have a question for you! {{quest}}?</p>
+		<p>Thank you, and be safe on Christmas Eve!</p>
+		<p>Sincerly, </p>
+		{{name}}
+		</h3>
+		<br>
+		<button id="b2" class="btn" onclick="window.print()" >
+		Print</button>
+		<br><br>
+		<button id="b3" class="btn" onclick="location.reload()" >
+		Start Over</button>	
+		<br><br>
+		<button id="b4" class="btn" onclick=window.location.href="index.html" >
+		Return to Christmas Town</button>	 
+	</div>
+
+
+	<div id="form" class="questions">
+		<h1>Write Your Letter to Santa:</h1>
+		<p>What is today's Date? </p>
+		<input type = "text" ng-model="date">
+		<p>What is your name? </p>
+		<input type = "text" ng-model="name">
+		<p>How old are you? </p>
+		<input type = "text" ng-model="age">
+		<p>How good were you? </p>
+		<select id="behavior">
+			<option value="select">Select from list.</option>
+			<option value="could've been better.">Could have been better.</option>
+			<option value="was good.">Good</option>
+			<option value="was really good.">Really Good.</option>
+		</select>
+		<p>What was something good you did this year? </p>
+		<input type = "text" ng-model="good">
+		<p>What would you like to give this year? </p>
+		<input type = "text" ng-model="give">
+		<p>What would you like Santa to bring you? </p>
+		<input type = "text" ng-model="want">
+		<p>What questions would you like to ask Santa?  </p>
+		<input type = "text" ng-model="quest"/>
+		<br>
+		<br>
+		<button id="b1" class="btn">Send your letter to Santa</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	document.getElementById("b1").onclick = function(){
+        document.getElementById("bg-img").style.backgroundImage = "url('img/santa10.jpg')";
+		document.getElementById("bg-img").style.minHeight = "1500px";
+        document.getElementById("lBehavior").innerHTML = document.getElementById("behavior").value;
+        document.getElementById("story").style.display="block";
+        document.getElementById("form").style.display = "none";
+    }
+
+
+</script>
